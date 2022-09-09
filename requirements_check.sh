@@ -18,7 +18,7 @@ version=$(cat /etc/os-release | grep 'VERSION=' | head -1 | tr ' ' '\n' | grep '
 
 # Current supported versions for various distros
 supported_centos=("7" "7.1" "7.2" "7.3" "7.4" "7.5" "7.6" "7.7" "7.8" "7.9")
-supported_ubuntu=("12.04" "14.04" "16.04" "18.04")
+supported_ubuntu=("12.04" "14.04" "16.04" "18.04" "20.04" "22.04")
 supported_debian=("9" "10")
 
 # Check for whether a version exists or not
@@ -113,16 +113,17 @@ then
   echo -e "\e[32mYour $memory MB of RAM meets the requirements."
   mem_check=true
 else
-  echo -e "\e[31mYour $memory MB of RAM does not meet the requirements."
+  echo -e "\e[31mYour $memory MB of RAM does not meet the requirements. Make sure you have atleast 8GB or more installed!"
 fi
 
 # Verifies the number of CPU cores is 2 or greater
-if [[ $cpu > 1 ]]
+if [[ $cpu >= 2 ]]
 then
   echo -e "\e[32mYour $cpu cores meets the requirements."
   cpu_check=true
 else
-  echo -e "\e[31mYour $cpu cores does not meet the requirements."
+  echo -e "\e[31mYour $cpu cores does not meet the requirements. Processor must be atleast dual core."
+  echo "[*]!-note-! If your architechture is ARM, make sure to choose it while running docker_bm-crane.sh as Blazemeter-crane image is based on AMD64 architechture"
 fi
 
 # Verifies the size of the hard drive meets the 100 GB requirement
@@ -235,15 +236,6 @@ else
   echo -e "\e[31mConnection to https://gcr.io/verdant-bulwark-278 unsuccessful."
 fi
 
-# Verifies connectivity to https://registry-1.docker.io
-if [[ $docker_registry == 200 ]]
-then
-  echo -e "\e[32mConnection to https://registry-1.docker.io successful."
-  connectivity_check=true
-else
-  echo -e "\e[31mConnection to https://registry-1.docker.io unsuccessful."
-fi
-
 if [ $is_centos == true ]
 then
   if [ $connectivity_check == true ] && [ $version_check == true ] && [ $firewall_check == true ] && [ $selinux_check == true ] && [ $hard_drive_check == true ] && [ $cpu_check == true ] && [ $mem_check == true ] && [ $docker_check == true ]
@@ -267,15 +259,3 @@ fi
 
 # Resets font color to defaults
 echo -e "\e[39m"
-
-
-sudo docker images >> crane.log
-
-sudo docker ps -a >> crane.log
-sudo docker ps
-echo "Copy the container ID of blazemeter-crane"
-
-echo "Enter the container id: "
-read ID
-
-sudo docker logs -f $ID >> crane.log

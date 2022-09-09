@@ -8,6 +8,7 @@ Requirements:
 5. Create an agent under the private-location in Blazemeter : https://guide.blazemeter.com/hc/en-us/articles/360017746838
 6. Copy the code and paste into the notepad to use it when the script promted for details. 
 7. Before, initiating the script, make sure the system/local machine meets the requirements standards for Blazemeter crane container : https://guide.blazemeter.com/hc/en-us/articles/209186065-Private-Location-System-Requirements-Private-Location-System-Requirements
-
+8. If in doubt, you can RUN requirements_check.sh to check if the system is meeting the specified requirement to handle Blazemeter-crane operations.
+9. Run logs.sh while raising a support ticket with Blazemeter, share crane.log
 
 https://github.com/ImMnan/blazemeter-crane.git
