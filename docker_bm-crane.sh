@@ -9,7 +9,7 @@ cat << EOF
 [4] Debian 10
 [5] Help
 
-Select the OS of the machine emter the number: !
+Select the OS of the machine emter the number:
 EOF
 
 while true
@@ -17,7 +17,7 @@ do
 	echo "[*] !-NOTE-! Done installing docker then press c to continue or Ctrl+C to exit"
 	read choice
 	if [ $choice = "c" ]; then
-    exit
+    break
 
 	elif [ $choice = "1" ]; then
 		sudo apt-get remove docker docker-engine docker.io containerd runc
