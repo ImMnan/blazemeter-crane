@@ -1,4 +1,4 @@
-This is an automated script to setup docker to support blazemeter-crane container. The script will also support setting up docker to support AMD64 based images for ARM based machines. 
+This is an automated script to setup docker to support blazemeter-crane container. The script will also support setting up docker to support ARM based architechture to support AMD64 based containers. 
 
 Requirements:
 1. A Blazemeter account
@@ -11,4 +11,5 @@ Requirements:
 8. If in doubt, you can RUN requirements_check.sh to check if the system is meeting the specified requirement to handle Blazemeter-crane operations.
 9. Run logs.sh while raising a support ticket with Blazemeter, share crane.log
 
+10. In case things are out of control, please contact blazemeter support.
 https://github.com/ImMnan/blazemeter-crane.git

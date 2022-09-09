@@ -1,5 +1,5 @@
 #!/bin/bash
-echo
+
 echo
 
 date >> crane.log

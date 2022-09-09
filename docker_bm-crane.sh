@@ -1,20 +1,22 @@
 #!/bin/bash
 
-echo "[*] This will install Fresh Docker into the ARM based system and get it ready to support AMD64 based docker images"
+echo "[*] The script will install latest Docker the system and get it ready to support blazemeter-crane"
+echo "[*] Supports ARM based system architechture too!"
 
 cat << EOF
 [1] UBUNTU 20.04/22.04
 [2] CentOS 7.7/7.8/7.9
 [3] RHEL 7.7/7.8/7.9
 [4] Debian 10
-[5] Help
+[5] Check system requirements
+[6] Help
 
-Select the OS of the machine emter the number:
+Select the OS of the machine, please enter the number:
 EOF
 
 while true
 do
-	echo "[*] !-NOTE-! Done installing docker then press c to continue or Ctrl+C to exit"
+	echo "[*] !-NOTE-! If done installing Docker then press 'c' to continue or 'Ctrl+C' to exit"
 	read choice
 	if [ $choice = "c" ]; then
     break
@@ -97,8 +99,11 @@ do
     echo "[*] Latest Docker installation complete!"
 
   elif [ $choice = "5" ]; then
-    less README.md
+    ./requirements_check.sh
     
+  elif [ $choice = "5" ]; then
+    less README.md
+
   else
     echo "PLease enter a valid input!"
   fi

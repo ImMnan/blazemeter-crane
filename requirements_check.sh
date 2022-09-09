@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+echo
 # Checks if user is root
 if [[ $EUID -ne 0 ]]; then
   echo -e "\e[31mYou must run this script as root"
@@ -259,3 +260,5 @@ fi
 
 # Resets font color to defaults
 echo -e "\e[39m"
+
+echo "Initiate docker_bm-crane.sh to start setting up docker and blazemeter crane!"
