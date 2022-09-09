@@ -2,7 +2,7 @@
 
 echo
 # Checks if user is root
-if [[ $EUID -ne 0 ]]; then
+if [ $EUID -ne 0 ]; then
   echo -e "\e[31mYou must run this script as root"
   echo -e "\e[39m"
   exit 1
@@ -34,13 +34,13 @@ docker_check=false
 connectivity_check=false
 
 # Check for CentOS versions
-if [[ $distribution == *"CentOS"* || $distribution == *"Red Hat"* ]]
+if [ $distribution == *"CentOS"* || $distribution == *"Red Hat"* ]
 then
   selinux=$(sestatus | grep "SELinux status" | cut -d ":" -f 2 | tr ' ' '\n' | grep "enabled")
   firewall=$(sudo firewall-cmd --state > /dev/null 2>&1)
   
   # Check is SELinux is enabled
-  if [[ $selinux == "enabled" ]]
+  if [ $selinux == "enabled" ]
   then
     echo -e "\e[33mSelinux is enabled and may cause issues with BlazeMeter agents."
   else
@@ -49,7 +49,7 @@ then
   fi
 
   # Check if firewall is running
-  if [[ $firewall == "running" ]]
+  if [ $firewall == "running" ]
   then
     echo -e "\e[33mFirewall is enabled and may cause issues with BlazeMeter agents if not properly configured."
   else
@@ -60,7 +60,7 @@ then
   # Check the version of RedHat/CentOS against supported versions
   for i in "${supported_centos[@]}"
   do
-    if [[ $i == $version ]]
+    if [ $i == $version ]
     then
       version_check=true
       break
@@ -68,13 +68,13 @@ then
   done
   is_centos=true
 # Check for Ubuntu versions
-elif [[ $distribution == *"Ubuntu"* ]]
+elif [ $distribution == *"Ubuntu"* ]
 then
   ubuntu_version=$(echo $version | cut -b 1-5)
   # Check the version of Ubuntu against supported versions
   for i in "${supported_ubuntu[@]}"
   do
-    if [[ $i == $ubuntu_version ]]
+    if [ $i == $ubuntu_version ]
     then
       version_check=true
       break
@@ -82,12 +82,12 @@ then
   done
 
 # Check for Debian versions
-elif [[ $distribution == *"Debian"* ]]
+elif [ $distribution == *"Debian"* ]
 then
   # Check the version of Debian against supported versions
   for i in "${supported_debian[@]}"
   do
-    if [[ $i == $version ]]
+    if [ $i == $version ]
     then
       version_check=true
       break
@@ -96,7 +96,7 @@ then
 fi
 
 # Notifies if version is supported or not
-if [[ $version_check == false ]]
+if [ $version_check == false ]
 then
   echo -e "\e[31mVersion $version of $distribution is not supported."
 else
@@ -118,7 +118,7 @@ else
 fi
 
 # Verifies the number of CPU cores is 2 or greater
-if [[ $cpu >= 2 ]]
+if [ $cpu -ge 2 ]
 then
   echo -e "\e[32mYour $cpu cores meets the requirements."
   cpu_check=true
@@ -145,7 +145,7 @@ else
   docker=$(sudo docker -v | awk '{print $3}' | cut -d ',' -f 1 | cut -d '.' -f 1)
   version=$(sudo docker -v | awk '{print $3}' | cut -d ',' -f 1)
 
-  if [[ $docker > 16 ]]
+  if [ $docker > 16 ]
   then
     echo -e "\e[32mYour Docker version $version is supported."
     docker_check=true
@@ -166,7 +166,7 @@ bzm_registry=$(curl -s https://gcr.io/verdant-bulwark-278 | grep "H1" | tr '>' '
 docker_registry=$(curl -s --dump-header - https://registry-1.docker.io | grep "HTTP" | awk '{print $2}') # 200
 
 # Verifies connectivity to https://a.blazemeter.com
-if [[ $performance == 401 ]]
+if [ $performance == 401 ]
 then
   echo -e "\e[32mConnection to https://a.blazemeter.com successful."
   connectivity_check=true
@@ -175,7 +175,7 @@ else
 fi
 
 # Verifies connectivity to https://data.blazemeter.com
-if [[ $data == 401 ]]
+if [ $data == 401 ]
 then
   echo -e "\e[32mConnection to https://data.blazemeter.com successful."
   connectivity_check=true
@@ -184,7 +184,7 @@ else
 fi
 
 # Verifies connectivity to https://storage.blazemeter.com
-if [[ $storage == "pong" ]]
+if [ $storage == "pong" ]
 then
   echo -e "\e[32mConnection to https://storage.blazemeter.com successful."
   connectivity_check=true
@@ -193,7 +193,7 @@ else
 fi
 
 # Verifies connectivity to https://mock.blazemeter.com
-if [[ $mock == 401 ]]
+if [ $mock == 401 ]
 then
   echo -e "\e[32mConnection to https://mock.blazemeter.com successful."
   connectivity_check=true
@@ -202,7 +202,7 @@ else
 fi
 
 # Verifies connectivity to https://auth.blazemeter.com
-if [[ $keycloak == 404 ]]
+if [ $keycloak == 404 ]
 then
   echo -e "\e[32mConnection to https://auth.blazemeter.com successful."
   connectivity_check=true
@@ -211,7 +211,7 @@ else
 fi
 
 # Verifies connectivity to https://bard.blazemeter.com
-if [[ $scriptless == 401 ]]
+if [ $scriptless == 401 ]
 then
   echo -e "\e[32mConnection to https://bard.blazemeter.com successful."
   connectivity_check=true
@@ -220,7 +220,7 @@ else
 fi
 
 # Verifies connectivity to https://tdm.blazemeter.com
-if [[ $testdata == 401 ]]
+if [ $testdata == 401 ]
 then
   echo -e "\e[32mConnection to https://tdm.blazemeter.com successful."
   connectivity_check=true
@@ -229,7 +229,7 @@ else
 fi
 
 # Verifies connectivity to https://gcr.io/verdant-bulwark-278
-if [[ $bzm_registry == 302 ]]
+if [ $bzm_registry == 302 ]
 then
   echo -e "\e[32mConnection to https://gcr.io/verdant-bulwark-278 successful."
   connectivity_check=true
