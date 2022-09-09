@@ -31,17 +31,20 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 echo "[*] Docker installation complete!"
 
 echo "[*] Are you using ARM system? (y or n): "
-read input1
+read INPUT1
 
-if [$input1 == 'y']; then
+if [ $INPUT1 = 'y' ]; 
+then
   echo "[*] Pulling and running AMD64 emulator"
   sudo docker run --privileged --rm tonistiigi/binfmt --install amd64
   echo "[*] Docker is now ready to run AMD64 based containers"
-elif [$input1 == 'n']; then
-echo "[*] No need to setup AMD64 emulator, skipping the step"  
+elif [ $INPUT1 = 'n' ]; 
+then
+  echo "[*] No need to setup AMD64 emulator, skipping the step"  
 sleep 1
 else
-echo "Please enter a valid response! (y or n)"
+  echo "Please enter a valid response! (y or n)"
+
 fi 
 
 echo "[*] Initiating Blaze-crane container now, please create an agent in Blaze, generate the docker command and enter the required field below,"

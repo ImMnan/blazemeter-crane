@@ -10,3 +10,4 @@ Prerequisites:
 7. Before, initiating the script, make sure the system/local machine meets the requirements standards for Blazemeter crane container : https://guide.blazemeter.com/hc/en-us/articles/209186065-Private-Location-System-Requirements-Private-Location-System-Requirements
 
 
+https://github.com/ImMnan/blazemeter-crane.git
