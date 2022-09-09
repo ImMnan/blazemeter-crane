@@ -1,6 +1,6 @@
-This is an automated script to setup docker to support blazemeter-crane container. The script will also support ARM based machines. 
+This is an automated script to setup docker to support blazemeter-crane container. The script will also support setting up docker to support AMD64 based images for ARM based machines. 
 
-Prerequisites:
+Requirements:
 1. A Blazemeter account
 2. Permissions to create Private location and Agent in Blazemeter
 3. Root priviledges or part of the sudoers group in the local machine - where the plan is to setup private location agent.
