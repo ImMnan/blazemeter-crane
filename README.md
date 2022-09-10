@@ -11,6 +11,6 @@ Requirements:
 8. Before, initiating the script, make sure your system meets the requirements standards for Blazemeter crane container : https://guide.blazemeter.com/hc/en-us/articles/209186065-Private-Location-System-Requirements-Private-Location-System-Requirements
 9. If in doubt, you can RUN requirements_check.sh to check if the system is meeting the specified requirement to handle Blazemeter-crane operations.
 10. Run logs.sh while raising a support ticket with Blazemeter, share crane.log
-11. If the system is restarted, or docker service is restarted, we can run initiate.sh to re-run the container. 
+11. If the system is restarted, or docker service is restarted, or in case the blaze-crane container does not run, rin restart.sh
 
 https://github.com/ImMnan/blazemeter-crane.git
