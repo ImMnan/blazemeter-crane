@@ -2,12 +2,12 @@
 
 sudo docker images
 sudo docker ps
-echo "Enter the container ID for blazemeter-crane: "
+echo "Enter the container ID for blazemeter-crane:"
 read con_id
 
-sudo docker ps stop $con_id
+sudo docker stop $con_id
 sudo docker run --privileged --rm tonistiigi/binfmt --install amd64
-sudo docker ps start $con_id
+sudo docker start $con_id
 
 sudo docker ps
 
