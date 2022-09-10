@@ -2,7 +2,7 @@
 
 sudo docker images
 sudo docker ps
-echo "Enter the container ID for blazemeter-crane:"
+echo "[*] Enter the container ID for blazemeter-crane:"
 read con_id
 
 sudo docker stop $con_id
@@ -11,5 +11,5 @@ sudo docker start $con_id
 
 sudo docker ps
 
-echo "Make sure the container status is running and not restarting!"
+echo "[*] Make sure the container status is running and not restarting!"
 

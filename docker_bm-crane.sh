@@ -11,7 +11,7 @@ cat << EOF
 [5] Check system requirements
 [6] Help
 
-Select the OS of the machine, please enter the number:
+[*] Select the OS of the machine, please enter the number:
 EOF
 
 while true
@@ -105,7 +105,7 @@ do
     less README.md
 
   else
-    echo "PLease enter a valid input!"
+    echo "[*] PLease enter a valid input!"
   fi
 
 done
@@ -146,5 +146,5 @@ sudo docker run --platform=linux/amd64 -d --env HARBOR_ID=$HARBOR_ID --env SHIP_
 sudo docker images
 sudo docker ps
 
-echo "You should be able to see Blazemeter crane container running! if you encounter an error, please contact support"
+echo "[*] You should be able to see Blazemeter crane container running! if you encounter an error, please contact support"
 
