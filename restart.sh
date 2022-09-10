@@ -1,16 +1,12 @@
 #!/bin/bash
 
-service docker status
-
-echo "Making sure the docker is running"
-
-sudo docker run --privileged --rm tonistiigi/binfmt --install amd64
-
-sudo docker ps -a
+sudo docker images
+sudo docker ps
 echo "Enter the container ID for blazemeter-crane: "
 read con_id
 
 sudo docker ps stop $con_id
+sudo docker run --privileged --rm tonistiigi/binfmt --install amd64
 sudo docker ps start $con_id
 
 sudo docker ps
