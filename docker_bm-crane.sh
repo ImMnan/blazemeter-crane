@@ -1,13 +1,13 @@
 #!/bin/bash
 
-echo "[*] The script will install latest Docker the system and get it ready to support blazemeter-crane"
+echo "[*] The script will install latest Docker into the system and get it ready to support blazemeter-crane"
 echo "[*] Supports ARM based system architechture too!"
 
 cat << EOF
 [1] UBUNTU 20.04/22.04
 [2] CentOS 7.7/7.8/7.9
 [3] RHEL 7.7/7.8/7.9
-[4] Debian 10
+[4] Debian 9/10
 [5] Check system requirements
 [6] Help
 
@@ -118,13 +118,13 @@ if [ $INPUT1 = 'y' ];
 then
   echo "[*] Pulling and running AMD64 emulator"
   sudo docker run --privileged --rm tonistiigi/binfmt --install amd64
-  echo "[*] Docker is now ready to run AMD64 based containers"
+  echo "[*] Docker is now ready to run AMD64 based Blazemeter-crane container"
 
 elif [ $INPUT1 = 'yes' ]; 
 then
   echo "[*] Pulling and running AMD64 emulator"
   sudo docker run --privileged --rm tonistiigi/binfmt --install amd64
-  echo "[*] Docker is now ready to run AMD64 based containers" 
+  echo "[*] Docker is now ready to run AMD64 based Blazemeter-crane container" 
 
 else
   echo "[*] No need to setup AMD64 emulator, skipping the step"
