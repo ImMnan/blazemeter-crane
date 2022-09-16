@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo docker images
-sudo docker ps
+sudo docker ps -a
 echo "[*] Enter the container ID for blazemeter-crane:"
 read con_id
 
